@@ -28,7 +28,7 @@ plt.style.use('ggplot')
 
 # import seaborn as sns
 # sns.set_style("whitegrid", {'axes.grid' : False})
-import multiprocessing
+# import multiprocessing
 
 import matplotlib.animation as mpl_animation
 matplotlib.rc('animation', html='html5')
