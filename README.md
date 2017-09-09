@@ -20,7 +20,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+In order to run this 
 
 ```
 Give examples
@@ -46,7 +46,41 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+There are two options to test the model performance and generate predictions:
+
+* Running a test over a new set of data
+* Running the Dockerfile image: when running the image it automatically executes the ```validation.py``` script, which runs the model over a test set of data that has been initially drawn from the providaded training set, and therefore not used during the model training -it has been included in the 'test_images' directory. This script:
+        * Generates predictions over the test set contained in 'test_images'
+        * Echoes the model performance metrics
+
+### Running a test over a new set of data
+
+In order to generate predictions and performance metrics for a new set of data:
+
+1. Clone this repository
+2. Copy your test set of images in 'test_images' folder. The directory structure should be of type:
+
+```
+test_images/
+        sushi/
+                img_1.jpg
+                img_2.jpg
+                ...
+        sandwich/
+                img_1.jpg
+                img_2.jpg
+                ...
+```
+
+3. Run:
+
+```
+python3 test.py
+```
+
+Alternatively provide a download address to the Dockerfile image that can be accessible with a "wget" command, e.g.:
+
+http://research.us-east-1.s3.amazonaws.com/public/sushi_or_sandwich_photos.zip
 
 ### Break down into end to end tests
 
