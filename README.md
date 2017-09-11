@@ -16,40 +16,40 @@ Results
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The following instructions show how to evaluate the list of trained models over a set of test data on a local machine. As the training process of the models has been performed in AWS GPU instances, it has been documented on IPython Notebooks located in the 'nbs' folder.
+
+The evaluation will be performed over the set of data contained under the folder 'test_data'. 
+
+See deployment for notes on how to deploy the project on a live system. 
 
 ### Prerequisites
 
-In order to run this 
-
-```
-Give examples
-```
+In order to run this project Git and Docker needs to be installed. Please, see https://www.docker.com.
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
+Clone or manually download the repository:
 
 ```
-Give the example
+git clone https://da93a600a1764d0ab1d9f08a69a62edc174b9aa6@github.com/blancaag/ss_image_class.git
 ```
 
-And repeat
+Run the Dockerfile
 
 ```
 until finished
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Alternatively provide a download address to the Dockerfile image that can be accessible with a "wget" command, e.g.:
+
+http://research.us-east-1.s3.amazonaws.com/public/sushi_or_sandwich_photos.zip
 
 ## Running the tests
 
 There are two options to test the model performance and generate predictions:
 
 * Running a test over a new set of data
-* Running the Dockerfile image: when running the image it automatically executes the ```validation.py``` script, which runs the model over a test set of data that has been initially drawn from the providaded training set, and therefore not used during the model training -it has been included in the 'test_images' directory. This script:
+* Running the Dockerfile image: when running the image it automatically executes the ```test.py``` script, which runs the model over a test set of data that has been initially drawn from the providaded training set, and therefore not used during the model training -it has been included in the 'test_images' directory. This script:
         * Generates predictions over the test set contained in 'test_images'
         * Echoes the model performance metrics
 
@@ -78,35 +78,20 @@ test_images/
 python3 test.py
 ```
 
-Alternatively provide a download address to the Dockerfile image that can be accessible with a "wget" command, e.g.:
-
-http://research.us-east-1.s3.amazonaws.com/public/sushi_or_sandwich_photos.zip
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+The deployment of the project on a production level is thought to be using the set of saved model weights/models obtained after training the models, therefore being the latency the time required to generate new predictions after new data has been provided -in the same way that the script ```test.py``` does.  
+
+Even if we are using saved models, architectures such as InceptionV3 and RensNet50 may be considered slow for a mobile application. Lighter models like MobileNet and derivations seem to offer a very good trade off between number of trainable parameters and accuracy.
+
+In terms of model update on a production level, a second pipeline can be set in which new incoming data canof the model can  new training data is expected to be available on a real time, a second pipeline can be buit in order to re-train and update the model live.
+
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Python 3.0.6](http://www.dropwizard.io/1.0.2/docs/)
+* [Keras 2.0.6/2.0.8](https://maven.apache.org/) - Dependency Management
 
 ## Contributing
 
@@ -131,10 +116,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Hat tip to anyone who's code was used
 * Inspiration
 * etc
-
-
-
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
