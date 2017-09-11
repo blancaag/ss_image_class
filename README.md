@@ -1,19 +1,17 @@
 # Project Title
 
-The purpose of this project is to assess the achivable accuracy on the sushi/sandwich image classification problem, using a set of 800 images and data augmentation. Further data has been collected and results be added to this repository over the next days. 
+The purpose of this project is to assess the achivable accuracy on the sushi/sandwich image classification problem, using a set of 800 images and data augmentation. Further data has been collected and results will be added to this repository over the next days. 
 
-The following table show the results obtained after a few epochs of model training, which leaves scope for further accuracy improvement 
+The following table show the results obtained after a few epochs of model training, which leaves scope for further accuracy improvement.
 
 Results
 
-| architecture  | description   | validation accuracy | comments      |
-| ------------- | ------------- | -------------       | ------------- |
-| inceptionv3   | Content Cell  | Content Cell        | Content Cell  |
-| resNet50      | Content Cell  | Content Cell        | Content Cell  |
-| resNet50      | Content Cell  |
-| resNet50      | Content Cell  |
-| resNet50      | Content Cell  |
-| resNet50      | Content Cell  |
+| architecture    | description                      | validation loss   | validation accuracy   |
+| --------------  | -------------------------------  | ----------------  | --------------------  |
+| InceptionV3     | InceptionV3 + 2-Dense top layer  | Content Cell      | Content Cell          |
+| ResNet50        | InceptionV3 + 2-Dense top layer  | Content Cell      | Content Cell          |
+| MobileNet - T1  | MobileNet + "Heavy" top layer    | Content Cell      | Content Cell          |
+| MobileNet - T2  | MobileNet + "Light" top layer    | Content Cell      | Content Cell          |
 
 
 ## Getting Started
