@@ -1,6 +1,8 @@
 # Project Title
 
-One Paragraph of project description goes here
+The purpose of this project is to assess the achivable accuracy on the sushi/sandwich image classification problem, using a set of 800 images and data augmentation. Further data has been collected and results be added to this repository over the next days. 
+
+The following table show the results obtained after a few epochs of model training, which leaves scope for further accuracy improvement 
 
 Results
 
