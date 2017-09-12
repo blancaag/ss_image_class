@@ -8,12 +8,33 @@ Results
 
 | architecture      | description                      | number of parameters   | validation loss   | validation accuracy   | 
 | --------------    | -------------------------------  | ---------------------  | ----------------  | --------------------  |
-| InceptionV3       | InceptionV3 + 2-Dense top layer  | 17.8M (17.2M + 0.60M)  | Content Cell      | 90.91%                |
-| ResNet50          | InceptionV3 + 2-Dense top layer  | M  (.M + 0.M)          | Content Cell      | 
-| MobileNet - T1    | MobileNet + "Heavy" top layer    | 3.5M  (3.2M + 0.265M)  | Content Cell      | 85.61%                |
-| MobileNet - T2.0  | MobileNet + "Light" top layer    | 3.3M (3.2M + 0.056M)   | Content Cell      | 85.01 %               |
-| MobileNet - T2.1  | MobileNet + "Light" top layer    | 3.2M (3.2M + 0.003M)   | Content Cell      | 82.50 %               |
+| InceptionV3       | InceptionV3 + 2-Dense top layer  | 17.8M (17.2M + 0.60M)  |       | 90.91%                |
+| ResNet50          | ResNet50 + 2-Dense top layer     | M  (.M + 0.M)          | 0.258             | 90.62%                |
+| MobileNet - T1    | MobileNet + "Heavy" top layer    | 3.5M  (3.2M + 0.265M)  | 0.222             | 85.61%                |
+| MobileNet - T2.0  | MobileNet + "Light" top layer    | 3.3M (3.2M + 0.056M)   |       | 85.01 %               |
+| MobileNet - T2.1  | MobileNet + "Light" top layer    | 3.2M (3.2M + 0.003M)   |       | 82.50 %               |
+| Ensemble model    | ResNet50 +  MobileNet - T1       |          -----         | 0.234             | 90.62%                |
 
+
+Evaluation metrics using the data contained in the 'test_data' directory:
+Model: resnet_50
+   loss: 0.258
+   binary_accuracy: 0.906
+   recall: 0.852
+   precision: 0.951
+   fmeasure: 0.896
+Model: mobilenet
+   loss: 0.222
+   binary_accuracy: 0.912
+   recall: 0.868
+   precision: 0.955
+   fmeasure: 0.908
+Model: ensemble_model
+   loss: 0.234
+   binary_accuracy: 0.906
+   recall: 0.811
+   precision: 0.984
+   fmeasure: 0.889
 
 ## Getting Started
 
