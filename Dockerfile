@@ -7,9 +7,11 @@ ADD . .
 
 # ARG on_local
 
+
+
 RUN pip install -r requirements.txt
-WORKDIR src/scripts/
-RUN python3 test.py
+# WORKDIR src/scripts/
+RUN python3 src/scripts/test.py
 
 EXPOSE 9090
-CMD ["python", "/code/app.py"]
+CMD ["python", "src/scripts/test.py"]
