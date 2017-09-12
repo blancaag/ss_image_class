@@ -80,7 +80,6 @@ docker build Dockerfile . --build-arg --on_local
 ```
 
  
-
 ## Deployment
 
 The deployment of the project on a production level is thought to be using the set of saved model weights/models obtained after training the models, therefore being the latency the time required to generate new predictions after new data has been provided -in the same way that the script ```test.py``` does.  
@@ -88,6 +87,10 @@ The deployment of the project on a production level is thought to be using the s
 Even if we are using saved models, architectures such as InceptionV3 and RensNet50 may be considered slow for a mobile application. Lighter models like MobileNet and derivations seem to offer a very good trade off between number of trainable parameters and accuracy.
 
 In terms of model update on a production level, a second pipeline can be set in which new incoming data is feed into the model in batches, in order to train, update it and make it available to the app. almost in real time. If data is not expected to be available with such frequency, the model update can be done on a daily basis using a similar pipeline.
+
+## Comments
+
+* InceptionV3 needs further 'finetunning' work.
 
 ## Built With
 
