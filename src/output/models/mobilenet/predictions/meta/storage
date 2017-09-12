@@ -1,1 +1,0 @@
-{"expectedlen": 160, "dtype": "float32", "cparams": {"cname": "lz4", "quantize": 0, "shuffle": 1, "clevel": 5}, "chunklen": 8192, "dflt": 0.0}

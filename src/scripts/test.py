@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../utils/')
+
 import libraries
 from libraries import *
 
