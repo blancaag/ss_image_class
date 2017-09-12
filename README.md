@@ -7,12 +7,12 @@ The following table show the results obtained after a few epochs of model traini
 Results
 
 | architecture      | description                      | number of parameters   | validation loss   | validation accuracy   | 
-| --------------    | -------------------------------  | ---------------------  | ----------------  |
-| InceptionV3       | InceptionV3 + 2-Dense top layer  | 27.7M (21.7M + 0.60M)  | Content Cell      | 
-| ResNet50          | InceptionV3 + 2-Dense top layer  | M  (.M + 0.M)          | Content Cell      |
-| MobileNet - T1    | MobileNet + "Heavy" top layer    | 3.5M  (3.2M + 0.265M)  | Content Cell      | 85.61%
-| MobileNet - T2.0  | MobileNet + "Light" top layer    | 3.3M (3.2M + 0.056M)   | Content Cell          | 85.01 %
-| MobileNet - T2.1  | MobileNet + "Light" top layer    | 3.2M (3.2M + 0.003M)   | Content Cell          | 82.50 %
+| --------------    | -------------------------------  | ---------------------  | ----------------  | --------------------  |
+| InceptionV3       | InceptionV3 + 2-Dense top layer  | 27.7M (21.7M + 0.60M)  | Content Cell      | 90.91%                |
+| ResNet50          | InceptionV3 + 2-Dense top layer  | M  (.M + 0.M)          | Content Cell      | 
+| MobileNet - T1    | MobileNet + "Heavy" top layer    | 3.5M  (3.2M + 0.265M)  | Content Cell      | 85.61%                |
+| MobileNet - T2.0  | MobileNet + "Light" top layer    | 3.3M (3.2M + 0.056M)   | Content Cell      | 85.01 %               |
+| MobileNet - T2.1  | MobileNet + "Light" top layer    | 3.2M (3.2M + 0.003M)   | Content Cell      | 82.50 %               |
 
 
 ## Getting Started
@@ -56,13 +56,13 @@ There are two options to test the model performance and generate predictions:
 
 ### Running a test over a new set of data
 
-In order to generate predictions and performance metrics for a new set of data:
+In order to generate predictions and performance metrics for a new set of data, please: 
 
 1. Clone this repository
-2. Copy your test set of images in 'test_images' folder. The directory structure should be of type:
+2. Copy your test set of images under 'test_images' folder. The directory structure should be of type:
 
 ```
-test_images/
+test_data/
         sushi/
                 img_1.jpg
                 img_2.jpg
@@ -73,12 +73,13 @@ test_images/
                 ...
 ```
 
-3. Run:
+3. Run the Dockerfile
 
 ```
-python3 test.py
+docker build Dockerfile . --build-arg --on_local
 ```
 
+ 
 
 ## Deployment
 
