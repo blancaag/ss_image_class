@@ -6,12 +6,13 @@ The following table show the results obtained after a few epochs of model traini
 
 Results
 
-| architecture    | description                      | validation loss   | validation accuracy   |
-| --------------  | -------------------------------  | ----------------  | --------------------  |
-| InceptionV3     | InceptionV3 + 2-Dense top layer  | Content Cell      | Content Cell          |
-| ResNet50        | InceptionV3 + 2-Dense top layer  | Content Cell      | Content Cell          |
-| MobileNet - T1  | MobileNet + "Heavy" top layer    | Content Cell      | Content Cell          |
-| MobileNet - T2  | MobileNet + "Light" top layer    | Content Cell      | Content Cell          |
+| architecture      | description                      | number of parameters   | validation loss   | validation accuracy   | 
+| --------------    | -------------------------------  | ---------------------  | ----------------  |
+| InceptionV3       | InceptionV3 + 2-Dense top layer  | 27.7M (21.7M + 0.60M)  | Content Cell      | 
+| ResNet50          | InceptionV3 + 2-Dense top layer  | M  (.M + 0.M)          | Content Cell      |
+| MobileNet - T1    | MobileNet + "Heavy" top layer    | 3.5M  (3.2M + 0.265M)  | Content Cell      | 85.61%
+| MobileNet - T2.0  | MobileNet + "Light" top layer    | 3.3M (3.2M + 0.056M)   | Content Cell          | 85.01 %
+| MobileNet - T2.1  | MobileNet + "Light" top layer    | 3.2M (3.2M + 0.003M)   | Content Cell          | 82.50 %
 
 
 ## Getting Started
