@@ -4,8 +4,6 @@ from libraries import *
 import utils
 from utils import *
 
-%matplotlib inline
-
 
 # checking
 print(get_available_gpus())

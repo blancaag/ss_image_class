@@ -9,7 +9,7 @@ ADD . .
 
 RUN pip install -r requirements.txt
 WORKDIR src/scripts/
-RUN python3 validation.py
+RUN python3 test.py
 
 EXPOSE 9090
 CMD ["python", "/code/app.py"]
