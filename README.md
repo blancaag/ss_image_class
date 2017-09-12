@@ -1,6 +1,6 @@
-# Project Title
+# Sushi vs. Sandwich image classification
 
-The purpose of this project is to assess the achivable accuracy on the sushi/sandwich image classification problem, using a set of 800 images and data augmentation -640 for training. Further data has been collected and results will be added to this repository over the next days. 
+The purpose of this project is to assess the achivable accuracy on the sushi/sandwich image classification problem, using a set of 800 images and data augmentation -640 for training. Further data has been collected in order to improve the model performance -results may be added over the next days-, nevertheless the objective of this work has been maximizing the accuracy with the available data through data augmentation and top layers parameter tunning.
 
 The following table show the results obtained after a few epochs of model training, which leaves scope for further accuracy improvement.
 
