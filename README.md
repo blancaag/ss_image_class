@@ -15,27 +15,6 @@ Results
 | MobileNet - T2.1  | MobileNet + "Light" top layer    | 3.2M (3.2M + 0.003M)   |       | 82.50 %               |
 | Ensemble model    | ResNet50 +  MobileNet - T1       |          -----         | 0.234             | 90.62%                |
 
-
-Evaluation metrics using the data contained in the 'test_data' directory:
-Model: resnet_50
-   loss: 0.258
-   binary_accuracy: 0.906
-   recall: 0.852
-   precision: 0.951
-   fmeasure: 0.896
-Model: mobilenet
-   loss: 0.222
-   binary_accuracy: 0.912
-   recall: 0.868
-   precision: 0.955
-   fmeasure: 0.908
-Model: ensemble_model
-   loss: 0.234
-   binary_accuracy: 0.906
-   recall: 0.811
-   precision: 0.984
-   fmeasure: 0.889
-
 ## Getting Started
 
 The following instructions show how to evaluate the list of trained models over a set of test data on a local machine. As the training process of the models has been performed in AWS GPU instances, it has been documented on IPython Notebooks located in the 'nbs' folder.
