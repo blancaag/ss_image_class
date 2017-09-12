@@ -2,7 +2,7 @@ import os
 cwd = os.getcwd()
 
 import sys
-#sys.path.append(cwd + '/src/utils/')
+sys.path.append(cwd + '/src/utils/')
 sys.path.append('../utils/')
 print (sys.path)
 
@@ -12,19 +12,21 @@ import utils_functions
 from utils_functions import *
 
 def add_model_results(model, m, metrics):
-
+    
     m_results = {}
 
     for _, i in enumerate(m.metrics_names):
         m_results[i] = metrics[_]
 
-    results[model] = m_results
+    results[model] = m_results 
 
 def print_results():
-
-    print ("Evaluation metrics using the data contained @ //// \n")
+    
+    print ("\nEvaluation metrics using the data contained in the 'test_data' directory:")
     for i, j in results.items():
-        for k, l in j.items(): print ("   %s: %.3f" %(k, l))
+        print("Model:", i)
+        for k, l in j.items(): 
+            print ("   %s: %.3f" %(k, l))
 
 def evaluate_resnet_50():
 
@@ -55,16 +57,16 @@ def evaluate_resnet_50():
 
     m = Model(bm.input, top_m(bm.output))
 
-    m.compile(Adam(),
-              loss='binary_crossentropy',
+    m.compile(Adam(), 
+              loss='binary_crossentropy', 
               metrics=metrics_list)
 
     m.load_weights(join(model_output_weights, 'm_0.2732_0.9000'))
 
     metrics = m.evaluate(x_test, y_test)
-
+    
     add_model_results(model, m, metrics)
-
+    
 def evaluate_inception_v3():
 
     # directories
@@ -95,23 +97,21 @@ def evaluate_inception_v3():
 
     m = Model(bm.input, top_m(bm.output))
 
-    m.compile(Adam(),
-              loss='binary_crossentropy',
+    m.compile(Adam(), 
+              loss='binary_crossentropy', 
               metrics=metrics_list)
 
     m.load_weights(join(model_output_weights, '.h5'))
 
     metrics = m.evaluate(x_test, y_test)
-
+    
     add_model_results(model, m, metrics)
-
+    
 def evaluate_mobilenet():
-
+    
     # reloading test data with the appropiate size
-    cd_path = join(join(output, data), str(input_shape_mn[0]) + '_' + str(input_shape_mn[1]))
-
     x_test, y_test = load_test_data(target_size=target_size_mn)
-
+    
     # directories
     model = 'mobilenet'
     model_output = join(join(output, models), model)
@@ -119,7 +119,7 @@ def evaluate_mobilenet():
 
     ## base model
     bm = MobileNet(include_top=False, weights='imagenet', input_shape=input_shape_mn)
-
+    
     ## top model
     p = 0.8
 
@@ -136,16 +136,42 @@ def evaluate_mobilenet():
 
     m = Model(bm.input, top_m(bm.output))
 
-    m.compile(Adam(),
-              loss='binary_crossentropy',
+    m.compile(Adam(), 
+              loss='binary_crossentropy', 
               metrics=metrics_list)
 
     m.load_weights(join(model_output_weights, 'm_p80_0.2221_0.9125'))
 
     metrics = m.evaluate(x_test, y_test)
-
+    
     add_model_results(model, m, metrics)
+    
+def evaluate_ensemble_model():
 
+    output_models = join(output, models)
+
+    preds = np.empty((0,) + (y_test.shape[0],))
+    for i in models_list:
+        model_ouput = join(output_models, i)
+        pred = load_array(join(join(output_models, i), 'predictions'))
+        pred = pred.ravel()
+        pred = pred.reshape((1,) + pred.shape)
+        print(pred.shape)
+        preds = np.append(preds, pred, axis=0)
+
+    preds_mean = preds.mean(axis=0)
+    
+    m_results = {}
+    
+    m_results['loss'] = log_loss(y_test, preds_mean)
+    m_results['binary_accuracy'] = accuracy_score(y_test, np.round(preds_mean))
+    m_results['recall'] = recall_score(y_test, np.round(preds_mean))
+    m_results['precision'] = precision_score(y_test, np.round(preds_mean))
+    m_results['fmeasure'] = f1_score(y_test, np.round(preds_mean))
+
+    results['Ensemble'] = m_results
+    
+    print(binary_crossentropy, binary_accuracy, recall, precision, fmeasure)
 
 
 
@@ -203,7 +229,6 @@ if __name__ == '__main__':
     # global variables
     target_size = (256, 256)
     target_size_mn = (224, 224)
-    num_classes = 1
     input_shape = target_size + (3,)
     input_shape_mn = target_size_mn + (3,)
     results = {}
@@ -218,5 +243,7 @@ if __name__ == '__main__':
     # model evaluation
     for i in models_list:
         exec('evaluate_{}()'.format(i))
-
-        print_results()
+    
+    evaluate_ensemble_model()
+    
+    print_results()
