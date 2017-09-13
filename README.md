@@ -1,71 +1,110 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # ss_image_class
 
 =======
 # Project Title
+=======
+# 'Sushi vs. Sandwich' image classification
+>>>>>>> building_blocks
 
-One Paragraph of project description goes here
+The purpose of this project is to assess the achivable accuracy on the sushi/sandwich image classification problem, using a set of 800 images -640 for training. Further data has been collected in order to improve the model performance -and results may be added over the next days. Nevertheless the objective of this work has been maximizing the accuracy levels with the available data through data augmentation and top layers parameter tunning.
+
+The following table show the results obtained after a few epochs of model training, which leaves scope for further accuracy improvement.
 
 Results
 
-| architecture  | description   | validation accuracy | comments      |
-| ------------- | ------------- | -------------       | ------------- |
-| inceptionv3   | Content Cell  | Content Cell        | Content Cell  |
-| resNet50      | Content Cell  | Content Cell        | Content Cell  |
-| resNet50      | Content Cell  |
-| resNet50      | Content Cell  |
-| resNet50      | Content Cell  |
-| resNet50      | Content Cell  |
-
+| architecture      | description                      | number of parameters   | validation loss   | validation accuracy   | 
+| --------------    | -------------------------------  | ---------------------  | ----------------  | --------------------  |
+| InceptionV3       | InceptionV3 + 2-Dense top layer  | 17.8M (17.2M + 0.60M)  | 0.215             | 92.50%                |
+| ResNet50          | ResNet50 + 2-Dense top layer     | M  (.M + 0.M)          | 0.258             | 90.62%                |
+| MobileNet - T1    | MobileNet + "Heavy" top layer    | 3.5M (3.2M + 0.265M)   | 0.222             | 91.25%                |
+| MobileNet - T2.0  | MobileNet + "Light" top layer    | 3.3M (3.2M + 0.056M)   |       | 85.01 %               |
+| MobileNet - T2.1  | MobileNet + "Light" top layer    | 3.2M (3.2M + 0.003M)   |       | 82.50 %               |
+| Ensemble model    | ResNet50 +  MobileNet - T1       |          -----         | 0.234             | 90.62%                |
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The following instructions show how to evaluate the list of trained models over a set of test data on a local machine. As the training process of the models has been performed in AWS GPU instances, it has been documented through IPython Notebooks located in the 'nbs' folder.
+
+The evaluation will be performed over the set of data contained under the folder 'test_data'. By default, it includes the validation set used in the trainning process. For use over a new set of test data, please see 'Running the tests'.
+
+See deployment for notes on how to deploy the project on a live system. 
 
 ### Prerequisites
 
-In order to run this 
-
-```
-Give examples
-```
+In order to run this project, Git and Docker needs to be installed. Please, see https://www.docker.com. If it is intended to be run withought the Docker image,  it requires also requires Python 3.+ (https://www.python.org).
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
+Clone or manually download the repository:
 
 ```
-Give the example
+git clone https://da93a600a1764d0ab1d9f08a69a62edc174b9aa6@github.com/blancaag/ss_image_class.git
 ```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
 There are two options to test the model performance and generate predictions:
 
-* Running a test over a new set of data
-* Running the Dockerfile image: when running the image it automatically executes the ```validation.py``` script, which runs the model over a test set of data that has been initially drawn from the providaded training set, and therefore not used during the model training -it has been included in the 'test_images' directory. This script:
+- Running the image Dockerfile included in this repository. **Note**: the Dockerfile will clone this repository each time that is executed, so in order to inlcude the last project updates this should be the default option.
+
+- Manually executing test.py
+
+### Running the image Dockerfile
+
+Please make sure you have Docker installed. After cloning the repository, 
+
+1. Start Docker
+2. Run the image Dockerfile
+
+```
+cd ss_image_class
+docker build -f Dockerfile 
+```
+It will show the evaluation metrics for the selected default models and an ensemble of the predictions ('voting system').
+
+When running the image it automatically executes the ```test.py``` script, which runs the model over a test set of data that has been initially drawn from the providaded training set, and therefore not used during the model training -it has been included in the 'test_images' directory. This script:
         * Generates predictions over the test set contained in 'test_images'
         * Echoes the model performance metrics
 
-### Running a test over a new set of data
+### Manually
 
-In order to generate predictions and performance metrics for a new set of data:
+After cloning the repository: 
 
-1. Clone this repository
-2. Copy your test set of images in 'test_images' folder. The directory structure should be of type:
+1. Run the ```test.py``` script:
 
 ```
-test_images/
+cd ss_image_class/src/scripts
+python3 test.py
+docker build Dockerfile . --build-arg --on_local
+```
+
+Running the script manually supports the following options (please run ```python3.6 test.py -h``` for more detail):
+
+```
+  -h, --help            show this help message and exit
+  --models [MODELS [MODELS ...]]
+                        Models to evaluate. Options: resnet50, mobilenet,
+                        indeption_v3
+  --metrics [METRICS [METRICS ...]]
+                        Metrics to use in the model evaluation. Default:
+                        binary_crossentropy (loss), binary_accuracy, recall,
+                        precision, fmesure.
+  --from_dir            If True the test data will be read on batches from the
+                        "test_data" directory. This option is suitable when
+                        the size of the test set is relatively big and memory
+                        constraints may appear.
+```
+
+## Running the test over a new set of data
+
+In order to evaluate the models over a new set of data -and after cloning the repository:
+
+1. Copy your test set of images under 'test_images' folder. The directory structure should be of type:
+
+```
+test_data/
         sushi/
                 img_1.jpg
                 img_2.jpg
@@ -76,70 +115,48 @@ test_images/
                 ...
 ```
 
-3. Run:
+2. Run the ```test.py``` script:
 
 ```
+cd ss_image_class/src/scripts
 python3 test.py
+docker build Dockerfile . --build-arg --on_local
 ```
 
-Alternatively provide a download address to the Dockerfile image that can be accessible with a "wget" command, e.g.:
-
-http://research.us-east-1.s3.amazonaws.com/public/sushi_or_sandwich_photos.zip
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+Please, see above for the supported execution options.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+The deployment of the project on a production level is thought to be using the set of saved model weights/models obtained after training the models, therefore being the latency the time required to generate new predictions after new data has been provided -in the same way that the script ```test.py``` does.  
 
-## Built With
+Even if we are using saved models, architectures such as InceptionV3 and RensNet50 may be considered slow for a mobile application. Lighter models like MobileNet and derivations seem to offer a very good trade off between number of trainable parameters and accuracy.
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+In terms of model update on a production level, a second pipeline can be set in which new incoming data is feed into the model in batches, in order to train, update it and make it available to the app. almost in real time. If data is not expected to be available with such frequency, the model update can be done on a daily basis using a similar pipeline.
 
-## Contributing
+## Next steps
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+* Test additional data
+* Further 'finetunning' work on InceptionV3
+* Add pretrained models .h5 files
+* Support generator from_directory for testing
+* Work with Dynamic Learning Rates callbacks
+* Add DenseNet 121, DenseNet 161 and DenseNet 169 
+* Add a filters visualization section
+* Lighten the Dockerfile image
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
+<<<<<<< HEAD
 * Hat tip to anyone who's code was used
 * Inspiration
 * etc
 >>>>>>> building_blocks
+=======
+## Built With
+>>>>>>> building_blocks
 
+* [Python 3.0.6] (https://www.python.org)
+* [Keras 2.0.6/2.0.8] (https://keras.io)
 
+## Contact and Citing 
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+- Please get in touch for bugs, enhancements and contributing -- bagonzalo@gmail.com
+- Please cite this repository [GitHub] (https://github.com/blancaag) if it has been of any help.
