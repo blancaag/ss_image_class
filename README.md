@@ -39,16 +39,16 @@ git clone https://da93a600a1764d0ab1d9f08a69a62edc174b9aa6@github.com/blancaag/s
 
 There are two options to test the model performance and generate predictions:
 
-- With the Dockerfile include in this repository. **Note**: he Dockerfile clones this repository each time that is executed, so in order to inlcude the last updates if the project this should be the default option.
+- Running the image Dockerfile included in this repository. **Note**: the Dockerfile will clone this repository each time that is executed, so in order to inlcude the last project updates this should be the default option.
 
 - Manually executing test.py
 
-* Running a test over a new set of data
-* Running the Dockerfile image: 
+### Running the image Dockerfile
 
-### With the image Dockerfile
+Please make sure you have Docker installed. After cloning the repository, 
 
-Please make sure you have Docker installed. After cloning the repository, start Docker and run:
+1. Start Docker
+2. Run the image Dockerfile
 
 ```
 cd ss_image_class
@@ -62,26 +62,9 @@ When running the image it automatically executes the ```test.py``` script, which
 
 ### Manually
 
-## Running the test over a new set of data
+After cloning the repository: 
 
-In order to generate predictions and performance metrics for a new set of data, please: 
-
-1. Clone this repository
-2. Copy your test set of images under 'test_images' folder. The directory structure should be of type:
-
-```
-test_data/
-        sushi/
-                img_1.jpg
-                img_2.jpg
-                ...
-        sandwich/
-                img_1.jpg
-                img_2.jpg
-                ...
-```
-
-3. Run the ```test.py``` script
+1. Run the ```test.py``` script:
 
 ```
 cd ss_image_class/src/scripts
@@ -89,7 +72,7 @@ python3 test.py
 docker build Dockerfile . --build-arg --on_local
 ```
 
-Running the script manually dupports the following options (please run ```python3.6 test.py -h``` for more detail):
+Running the script manually supports the following options (please run ```python3.6 test.py -h``` for more detail):
 
 ```
   -h, --help            show this help message and exit
@@ -105,7 +88,35 @@ Running the script manually dupports the following options (please run ```python
                         the size of the test set is relatively big and memory
                         constraints may appear.
 ```
- 
+
+## Running the test over a new set of data
+
+In order to evaluate the models over a new set of data -and after cloning the repository:
+
+1. Copy your test set of images under 'test_images' folder. The directory structure should be of type:
+
+```
+test_data/
+        sushi/
+                img_1.jpg
+                img_2.jpg
+                ...
+        sandwich/
+                img_1.jpg
+                img_2.jpg
+                ...
+```
+
+2. Run the ```test.py``` script:
+
+```
+cd ss_image_class/src/scripts
+python3 test.py
+docker build Dockerfile . --build-arg --on_local
+```
+
+Please, see above for the supported execution options.
+
 ## Deployment
 
 The deployment of the project on a production level is thought to be using the set of saved model weights/models obtained after training the models, therefore being the latency the time required to generate new predictions after new data has been provided -in the same way that the script ```test.py``` does.  
@@ -123,16 +134,14 @@ In terms of model update on a production level, a second pipeline can be set in 
 * Work with Dynamic Learning Rates callbacks
 * Add DenseNet 121, DenseNet 161 and DenseNet 169 
 * Add a filters visualization section
+* Lighten the Dockerfile image
 
 ## Built With
 
 * [Python 3.0.6] (https://www.python.org)
 * [Keras 2.0.6/2.0.8] (https://keras.io)
 
-## Citing 
+## Contact and Citing 
 
+Please get in touch for bugs, enhancements and contributing -- bagonzalo@gmail.com
 Please cite this repository [GitHub] (https://github.com/blancaag) if it has been of any help.
-
-## Authors
-
-* **Blanca Alonso** -- [GitHub] (https://github.com/blancaag)
