@@ -62,8 +62,9 @@
       return ad_gens_g
 ```
 
-  
+
+
 <img align="left" width="200" height="200" src="https://github.com/blancaag/ss_image_class/blob/building_blocks/src/output/aug_data_sample/_0_2276.png">
 <img align="right" width="200" height="200" src="https://github.com/blancaag/ss_image_class/blob/building_blocks/src/output/aug_data_sample/_0_5265.png">
 <img align="left" width="200" height="200" src="https://github.com/blancaag/ss_image_class/blob/building_blocks/src/output/aug_data_sample/_0_5310.png">
-<img align="right" width="200" height="200" src="https://github.com/blancaag/ss_image_class/blob/building_blocks/src/output/aug_data_sample/_0_8934.png"><br /><br /><br /><br />
+<img align="right" width="200" height="200" src="https://github.com/blancaag/ss_image_class/blob/building_blocks/src/output/aug_data_sample/_0_8934.png">
