@@ -64,4 +64,4 @@
       ```
 +
 +
-![Alt text](/../output/aug_data_sample/img.jpg?raw=true "Example")
+![Alt text](/../output/aug_data_sample/_0_2276.png?raw=true "Example")
