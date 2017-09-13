@@ -64,4 +64,4 @@
       ```
 +
 +
-![Alt text](/../output/aug_data_sample/_0_2276.png?raw=true "Example")
+![Alt text](https://github.com/blancaag/ss_image_class/blob/building_blocks/src/output/aug_data_sample/_0_2276.png)
