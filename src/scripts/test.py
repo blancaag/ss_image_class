@@ -169,7 +169,7 @@ def evaluate_ensemble_model():
     m_results['precision'] = precision_score(y_test, np.round(preds_mean))
     m_results['fmeasure'] = f1_score(y_test, np.round(preds_mean))
 
-    results['Ensemble'] = m_results
+    results['ensemble'] = m_results
 
     print(binary_crossentropy, binary_accuracy, recall, precision, fmeasure)
 
