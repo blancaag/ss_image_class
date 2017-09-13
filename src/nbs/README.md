@@ -21,7 +21,8 @@
     - Visualizing predictions<br /><br />
     
 
-  ```
+
+```
   def aug_data_generators(model, n_gen=None, cropping=None):
 
       preprocess_input = set_preprocess_input_function(model=model, cropping=cropping)
