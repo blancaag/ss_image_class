@@ -143,5 +143,5 @@ In terms of model update on a production level, a second pipeline can be set in 
 
 ## Contact and Citing 
 
-Please get in touch for bugs, enhancements and contributing -- bagonzalo@gmail.com
-Please cite this repository [GitHub] (https://github.com/blancaag) if it has been of any help.
+- Please get in touch for bugs, enhancements and contributing -- bagonzalo@gmail.com
+- Please cite this repository [GitHub] (https://github.com/blancaag) if it has been of any help.
