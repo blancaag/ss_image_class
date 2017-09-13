@@ -11,8 +11,8 @@ Results
 | InceptionV3       | InceptionV3 + 2-Dense top layer  | 17.8M (17.2M + 0.60M)  | 0.215             | 92.50%                |
 | ResNet50          | ResNet50 + 2-Dense top layer     | M  (.M + 0.M)          | 0.258             | 90.62%                |
 | MobileNet - T1    | MobileNet + "Heavy" top layer    | 3.5M (3.2M + 0.265M)   | 0.222             | 91.25%                |
-| MobileNet - T2.0  | MobileNet + "Light" top layer    | 3.3M (3.2M + 0.056M)   |       | 85.01 %               |
-| MobileNet - T2.1  | MobileNet + "Light" top layer    | 3.2M (3.2M + 0.003M)   |       | 82.50 %               |
+| MobileNet - T2.0  | MobileNet + "Light" top layer    | 3.3M (3.2M + 0.056M)   | 0.551             | 82.88 %               |
+| MobileNet - T2.1  | MobileNet + "Light" top layer    | 3.2M (3.2M + 0.003M)   | 0.353             | 84.13 %               |
 | Ensemble model    | ResNet50 +  MobileNet - T1       |          -----         | 0.234             | 90.62%                |
 
 ## Getting Started
