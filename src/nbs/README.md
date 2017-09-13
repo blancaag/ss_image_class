@@ -64,7 +64,7 @@
 
 ![Alt text](https://github.com/blancaag/ss_image_class/blob/building_blocks/src/output/aug_data_sample/_0_2276.png)
 
-<img align="left" width="100" height="100" src="http://www.fillmurray.com/100/100">
-<img align="right" width="100" height="100" src="http://www.fillmurray.com/100/100">
-<img align="left" width="100" height="100" src="http://www.fillmurray.com/100/100">
-<img align="right" width="100" height="100" src="http://www.fillmurray.com/100/100">
+<img align="left" width="200" height="200" src="https://github.com/blancaag/ss_image_class/blob/building_blocks/src/output/aug_data_sample/_0_2276.png">
+<img align="right" width="200" height="200" src="https://github.com/blancaag/ss_image_class/blob/building_blocks/src/output/aug_data_sample/_0_5265.png">
+<img align="left" width="200" height="200" src="https://github.com/blancaag/ss_image_class/blob/building_blocks/src/output/aug_data_sample/_0_5310.png">
+<img align="right" width="200" height="200" src="https://github.com/blancaag/ss_image_class/blob/building_blocks/src/output/aug_data_sample/_0_8934.png">
