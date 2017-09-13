@@ -1,6 +1,6 @@
 # 'Sushi vs. Sandwich' image classification
 
-The purpose of this project is to assess the achivable accuracy on the sushi/sandwich image classification problem, using a set of 800 images -640 for training. Further data has been collected in order to improve the model performance -and results may be added over the next days. Nevertheless the objective of this work has been maximizing the accuracy levels with the available data through data augmentation and top layers parameter tunning.
+The purpose of this project is to assess the achivable accuracy on the sushi/sandwich image classification problem, using a set of 800 images -640 for training. Further data has been collected in order to improve the model performance -and results may be added over the next days. Nevertheless the objective of this work has been maximizing the accuracy levels with the available data through data augmentation and cropping, and top layers parameter tunning.
 
 The following table show the results obtained after a few epochs of model training, which leaves scope for further accuracy improvement.
 
@@ -17,11 +17,13 @@ Results
 
 ## Getting Started
 
-The following instructions show how to evaluate the list of trained models over a set of test data on a local machine. As the training process of the models has been performed in AWS GPU instances, it has been documented through IPython Notebooks located in the 'nbs' folder.
+The following instructions show how to evaluate the list of trained models over a set of test data on a local machine. As the training process of the models has been performed in AWS GPU instances, it has been documented through IPython Notebooks located in the 'src/nbs' directory.
 
-The evaluation will be performed over the set of data contained under the folder 'test_data'. By default, it includes the validation set used in the trainning process. For use over a new set of test data, please see 'Running the tests'.
+Please, go to https://github.com/blancaag/ss_image_class/blob/building_blocks/src/nbs/README.md (src/nbs) for further comments about training the networks.
 
-See deployment for notes on how to deploy the project on a live system. 
+The evaluation of the models will be performed over the set of data contained under the 'src/source/test_data' directory. By default, it includes the validation set used in the trainning process. For use over a new set of test data, please see 'Running the test over a new set of data'.
+
+See 'Deployment' for notes on how to deploy the project on a production level. 
 
 ### Prerequisites
 
@@ -56,7 +58,7 @@ docker build -f Dockerfile
 ```
 It will show the evaluation metrics for the selected default models and an ensemble of the predictions ('voting system').
 
-When running the image it automatically executes the ```test.py``` script, which runs the model over a test set of data that has been initially drawn from the providaded training set, and therefore not used during the model training -it has been included in the 'test_images' directory. This script:
+When running the image it automatically executes the ```test.py``` script, which runs the model over a test set of data that has been initially drawn from the providaded training set, and therefore not used during the model training -it has been included in the 'src/source/test_images directory'. This script:
         * Generates predictions over the test set contained in 'test_images'
         * Echoes the model performance metrics
 
@@ -93,14 +95,14 @@ Running the script manually supports the following options (please run ```python
 
 In order to evaluate the models over a new set of data -and after cloning the repository:
 
-1. Delete 'source/compressed_data' directory:
+1. Delete 'src/source/compressed_data' directory:
 
 ```
 cd ss_image_class/src/source
 rm -rf compressed_data
 ```
 
-2. Copy your test set of images under 'source/test_images' directory. The directory structure should be of type:
+2. Copy your test set of images under 'src/source/test_images' directory. The directory structure should be of type:
 
 ```
 test_data/
@@ -128,7 +130,7 @@ Please, see above for the supported execution options.
 
 The deployment of the project on a production level is thought to be using the set of saved model weights/models obtained after training the models, therefore being the latency the time required to generate new predictions after new data has been provided -in the same way that the script ```test.py``` does.  
 
-Even if we are using saved models, architectures such as InceptionV3 and RensNet50 may be considered slow for a mobile application. Lighter models like MobileNet and derivations seem to offer a very good trade off between number of trainable parameters and accuracy.
+Even if we are using saved models, architectures such as InceptionV3 and RensNet50 may be too slow for a mobile application. Lighter models like MobileNet and derivations seem to offer a very good trade off between number of trainable parameters and accuracy.
 
 In terms of model update on a production level, a second pipeline can be set in which new incoming data is feed into the model in batches, in order to train, update it and make it available to the app. almost in real time. If data is not expected to be available with such frequency, the model update can be done on a daily basis using a similar pipeline.
 
