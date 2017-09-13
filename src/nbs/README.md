@@ -10,7 +10,7 @@
 
     The pipeline of is mainly by the aug_data_generators() function contained in ```utils_functions.py```:
 
-    It iterates over a range of values for different parameters in order to generate a set of 288 different generators. A sample of the produced images gets stored in the src/output/aug_data_sample directory.
+    It iterates over a range of values for different parameters in order to generate a set of 288 different generators. A sample of the produced images gets stored in the src/output/aug_data_sample directory and is shown below.
     
   - Modeling:
     - Base model: instanciating the ImageNet pre-trained models
@@ -20,6 +20,8 @@
     - Training the whole model: 'unfreezing' some of the base model's last layer blocks and retrain the base + top model with the original training images -w/o data augmentaion.
     - Visualizing predictions
     
+
+
 
   ```
   def aug_data_generators(model, n_gen=None, cropping=None):
