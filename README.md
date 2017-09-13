@@ -145,12 +145,12 @@ In terms of model update on a production level, a second pipeline can be set in 
 * Add a filters visualization section
 * Lighten the Dockerfile image
 
-## Built With
+## Built with
 
 * [Python 3.0.6] (https://www.python.org)
 * [Keras 2.0.6/2.0.8] (https://keras.io)
 
-## Contact and Citing 
+## Contact and citing 
 
 - Please get in touch for bugs, enhancements and contributing -- bagonzalo@gmail.com
 - Please cite this repository [GitHub] (https://github.com/blancaag) if it has been of any help.
