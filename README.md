@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# ss_image_class
 
-=======
-# Project Title
-=======
 # 'Sushi vs. Sandwich' image classification
->>>>>>> building_blocks
 
 The purpose of this project is to assess the achivable accuracy on the sushi/sandwich image classification problem, using a set of 800 images -640 for training. Further data has been collected in order to improve the model performance -and results may be added over the next days. Nevertheless the objective of this work has been maximizing the accuracy levels with the available data through data augmentation and top layers parameter tunning.
 
@@ -144,14 +137,7 @@ In terms of model update on a production level, a second pipeline can be set in 
 * Add a filters visualization section
 * Lighten the Dockerfile image
 
-<<<<<<< HEAD
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
->>>>>>> building_blocks
-=======
 ## Built With
->>>>>>> building_blocks
 
 * [Python 3.0.6] (https://www.python.org)
 * [Keras 2.0.6/2.0.8] (https://keras.io)
