@@ -35,26 +35,34 @@ Clone or manually download the repository:
 git clone https://da93a600a1764d0ab1d9f08a69a62edc174b9aa6@github.com/blancaag/ss_image_class.git
 ```
 
-Run the Dockerfile
-
-```
-until finished
-```
-
-Alternatively provide a download address to the Dockerfile image that can be accessible with a "wget" command, e.g.:
-
-http://research.us-east-1.s3.amazonaws.com/public/sushi_or_sandwich_photos.zip
-
 ## Running the tests
 
 There are two options to test the model performance and generate predictions:
 
+- With the Dockerfile include in this repository. **Note**: he Dockerfile clones this repository each time that is executed, so in order to inlcude the last updates if the project this should be the default option.
+
+- Manually executing test.py
+
 * Running a test over a new set of data
-* Running the Dockerfile image: when running the image it automatically executes the ```test.py``` script, which runs the model over a test set of data that has been initially drawn from the providaded training set, and therefore not used during the model training -it has been included in the 'test_images' directory. This script:
+* Running the Dockerfile image: 
+
+### With the image Dockerfile
+
+Please make sure you have Docker installed. After cloning the repository, start Docker and run:
+
+```
+cd ss_image_class
+docker build -f Dockerfile 
+```
+It will show the evaluation metrics for the selected default models and an ensemble of the predictions ('voting system').
+
+When running the image it automatically executes the ```test.py``` script, which runs the model over a test set of data that has been initially drawn from the providaded training set, and therefore not used during the model training -it has been included in the 'test_images' directory. This script:
         * Generates predictions over the test set contained in 'test_images'
         * Echoes the model performance metrics
 
-### Running a test over a new set of data
+### Manually
+
+## Running the test over a new set of data
 
 In order to generate predictions and performance metrics for a new set of data, please: 
 
@@ -73,12 +81,30 @@ test_data/
                 ...
 ```
 
-3. Run the Dockerfile
+3. Run the ```test.py``` script
 
 ```
+cd ss_image_class/src/scripts
+python3 test.py
 docker build Dockerfile . --build-arg --on_local
 ```
 
+Running the script manually dupports the following options (please run ```python3.6 test.py -h``` for more detail):
+
+```
+  -h, --help            show this help message and exit
+  --models [MODELS [MODELS ...]]
+                        Models to evaluate. Options: resnet50, mobilenet,
+                        indeption_v3
+  --metrics [METRICS [METRICS ...]]
+                        Metrics to use in the model evaluation. Default:
+                        binary_crossentropy (loss), binary_accuracy, recall,
+                        precision, fmesure.
+  --from_dir            If True the test data will be read on batches from the
+                        "test_data" directory. This option is suitable when
+                        the size of the test set is relatively big and memory
+                        constraints may appear.
+```
  
 ## Deployment
 
@@ -88,25 +114,25 @@ Even if we are using saved models, architectures such as InceptionV3 and RensNet
 
 In terms of model update on a production level, a second pipeline can be set in which new incoming data is feed into the model in batches, in order to train, update it and make it available to the app. almost in real time. If data is not expected to be available with such frequency, the model update can be done on a daily basis using a similar pipeline.
 
-## Comments
+## Next steps
 
-* InceptionV3 needs further 'finetunning' work.
+* Test additional data
+* Further 'finetunning' work on InceptionV3
+* Add pretrained models .h5 files
+* Support generator from_directory for testing
+* Work with Dynamic Learning Rates callbacks
+* Add DenseNet 121, DenseNet 161 and DenseNet 169 
+* Add a filters visualization section
 
 ## Built With
 
-* [Python 3.0.6](http://www.dropwizard.io/1.0.2/docs/)
-* [Keras 2.0.6/2.0.8](https://maven.apache.org/) - Dependency Management
+* [Python 3.0.6] (https://www.python.org)
+* [Keras 2.0.6/2.0.8] (https://keras.io)
 
-## Contributing
+## Citing 
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Please cite this repository [GitHub] (https://github.com/blancaag) if it has been of any help.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Blanca Alonso** -- [GitHub] (https://github.com/blancaag)
