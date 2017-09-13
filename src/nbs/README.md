@@ -19,10 +19,9 @@
     - Setting alternative top models: exploring other top layer architectures.
     - Training the whole model: 'unfreezing' some of the base model's last layer blocks and retrain the base + top model with the original training images -w/o data augmentaion.
     - Visualizing predictions
-    
-
-
-
++    
++
++
   ```
   def aug_data_generators(model, n_gen=None, cropping=None):
 
@@ -63,5 +62,6 @@
 
       return ad_gens_g
       ```
-
++
++
 ![Alt text](/../output/aug_data_sample/img.jpg?raw=true "Example")
