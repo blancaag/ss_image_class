@@ -8,24 +8,24 @@ Results
 
 | architecture      | description                      | number of parameters   | validation loss   | validation accuracy   | 
 | --------------    | -------------------------------  | ---------------------  | ----------------  | --------------------  |
-| InceptionV3       | InceptionV3 + 2-Dense top layer  | 17.8M (17.2M + 0.60M)  |       | 90.91%                |
+| InceptionV3       | InceptionV3 + 2-Dense top layer  | 17.8M (17.2M + 0.60M)  | 0.215             | 92.50%                |
 | ResNet50          | ResNet50 + 2-Dense top layer     | M  (.M + 0.M)          | 0.258             | 90.62%                |
-| MobileNet - T1    | MobileNet + "Heavy" top layer    | 3.5M  (3.2M + 0.265M)  | 0.222             | 85.61%                |
+| MobileNet - T1    | MobileNet + "Heavy" top layer    | 3.5M (3.2M + 0.265M)   | 0.222             | 91.25%                |
 | MobileNet - T2.0  | MobileNet + "Light" top layer    | 3.3M (3.2M + 0.056M)   |       | 85.01 %               |
 | MobileNet - T2.1  | MobileNet + "Light" top layer    | 3.2M (3.2M + 0.003M)   |       | 82.50 %               |
 | Ensemble model    | ResNet50 +  MobileNet - T1       |          -----         | 0.234             | 90.62%                |
 
 ## Getting Started
 
-The following instructions show how to evaluate the list of trained models over a set of test data on a local machine. As the training process of the models has been performed in AWS GPU instances, it has been documented on IPython Notebooks located in the 'nbs' folder.
+The following instructions show how to evaluate the list of trained models over a set of test data on a local machine. As the training process of the models has been performed in AWS GPU instances, it has been documented through IPython Notebooks located in the 'nbs' folder.
 
-The evaluation will be performed over the set of data contained under the folder 'test_data'. 
+The evaluation will be performed over the set of data contained under the folder 'test_data'. By default, it includes the validation set used in the trainning process. For use over a new set of test data, please see 'Running the tests'.
 
 See deployment for notes on how to deploy the project on a live system. 
 
 ### Prerequisites
 
-In order to run this project Git and Docker needs to be installed. Please, see https://www.docker.com.
+In order to run this project, Git and Docker needs to be installed. Please, see https://www.docker.com. If it is intended to be run withought the Docker image,  it requires also requires Python 3.+ (https://www.python.org).
 
 ### Installing
 
