@@ -12,20 +12,20 @@ import utils_functions
 from utils_functions import *
 
 def add_model_results(model, m, metrics):
-    
+
     m_results = {}
 
     for _, i in enumerate(m.metrics_names):
         m_results[i] = metrics[_]
 
-    results[model] = m_results 
+    results[model] = m_results
 
 def print_results():
-    
+
     print ("\nEvaluation metrics using the data contained in the 'test_data' directory:")
     for i, j in results.items():
         print("Model:", i)
-        for k, l in j.items(): 
+        for k, l in j.items():
             print ("   %s: %.3f" %(k, l))
 
 def evaluate_resnet_50():
@@ -57,16 +57,16 @@ def evaluate_resnet_50():
 
     m = Model(bm.input, top_m(bm.output))
 
-    m.compile(Adam(), 
-              loss='binary_crossentropy', 
+    m.compile(Adam(),
+              loss='binary_crossentropy',
               metrics=metrics_list)
 
     m.load_weights(join(model_output_weights, 'm_0.2732_0.9000'))
 
     metrics = m.evaluate(x_test, y_test)
-    
+
     add_model_results(model, m, metrics)
-    
+
 def evaluate_inception_v3():
 
     # directories
@@ -97,21 +97,21 @@ def evaluate_inception_v3():
 
     m = Model(bm.input, top_m(bm.output))
 
-    m.compile(Adam(), 
-              loss='binary_crossentropy', 
+    m.compile(Adam(),
+              loss='binary_crossentropy',
               metrics=metrics_list)
 
     m.load_weights(join(model_output_weights, '.h5'))
 
     metrics = m.evaluate(x_test, y_test)
-    
+
     add_model_results(model, m, metrics)
-    
+
 def evaluate_mobilenet():
-    
+
     # reloading test data with the appropiate size
     x_test, y_test = load_test_data(target_size=target_size_mn)
-    
+
     # directories
     model = 'mobilenet'
     model_output = join(join(output, models), model)
@@ -119,7 +119,7 @@ def evaluate_mobilenet():
 
     ## base model
     bm = MobileNet(include_top=False, weights='imagenet', input_shape=input_shape_mn)
-    
+
     ## top model
     p = 0.8
 
@@ -136,16 +136,16 @@ def evaluate_mobilenet():
 
     m = Model(bm.input, top_m(bm.output))
 
-    m.compile(Adam(), 
-              loss='binary_crossentropy', 
+    m.compile(Adam(),
+              loss='binary_crossentropy',
               metrics=metrics_list)
 
     m.load_weights(join(model_output_weights, 'm_p80_0.2221_0.9125'))
 
     metrics = m.evaluate(x_test, y_test)
-    
+
     add_model_results(model, m, metrics)
-    
+
 def evaluate_ensemble_model():
 
     output_models = join(output, models)
@@ -160,9 +160,9 @@ def evaluate_ensemble_model():
         preds = np.append(preds, pred, axis=0)
 
     preds_mean = preds.mean(axis=0)
-    
+
     m_results = {}
-    
+
     m_results['loss'] = log_loss(y_test, preds_mean)
     m_results['binary_accuracy'] = accuracy_score(y_test, np.round(preds_mean))
     m_results['recall'] = recall_score(y_test, np.round(preds_mean))
@@ -170,7 +170,7 @@ def evaluate_ensemble_model():
     m_results['fmeasure'] = f1_score(y_test, np.round(preds_mean))
 
     results['Ensemble'] = m_results
-    
+
     print(binary_crossentropy, binary_accuracy, recall, precision, fmeasure)
 
 
@@ -196,7 +196,6 @@ if __name__ == '__main__':
                          test set is relatively big and memory constraints may appear.')
 
     p = parser.parse_args()
-    print(p.from_dir, p.metrics, p.models)
     # parser.print_help()
 
     # models to include
@@ -243,7 +242,7 @@ if __name__ == '__main__':
     # model evaluation
     for i in models_list:
         exec('evaluate_{}()'.format(i))
-    
+
     evaluate_ensemble_model()
-    
+
     print_results()
