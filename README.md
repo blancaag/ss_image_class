@@ -93,7 +93,14 @@ Running the script manually supports the following options (please run ```python
 
 In order to evaluate the models over a new set of data -and after cloning the repository:
 
-1. Copy your test set of images under 'test_images' folder. The directory structure should be of type:
+1. Delete 'source/compressed_data' directory:
+
+```
+cd ss_image_class/src/source
+rm -rf compressed_data
+```
+
+2. Copy your test set of images under 'source/test_images' directory. The directory structure should be of type:
 
 ```
 test_data/
@@ -107,7 +114,7 @@ test_data/
                 ...
 ```
 
-2. Run the ```test.py``` script:
+3. Run the ```test.py``` script:
 
 ```
 cd ss_image_class/src/scripts
