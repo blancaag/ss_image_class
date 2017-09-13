@@ -18,10 +18,9 @@
     - Top model: training a top layer for the base model with the generated features
     - Setting alternative top models: exploring other top layer architectures.
     - Training the whole model: 'unfreezing' some of the base model's last layer blocks and retrain the base + top model with the original training images -w/o data augmentaion.
-    - Visualizing predictions
-{nbsp} +    
-{nbsp} +
-{nbsp} +
+    - Visualizing predictions<br /><br /><br />
+
+
   ```
   def aug_data_generators(model, n_gen=None, cropping=None):
 
@@ -62,6 +61,6 @@
 
       return ad_gens_g
       ```
-{nbsp} +
-{nbsp} +
+
+
 ![Alt text](https://github.com/blancaag/ss_image_class/blob/building_blocks/src/output/aug_data_sample/_0_2276.png)
