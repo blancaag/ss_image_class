@@ -4,7 +4,7 @@ The purpose of this project is to assess the achivable accuracy on the sushi/san
 
 The following table show the results obtained after a few epochs of model training, which leaves scope for further accuracy improvement.
 
-Results
+
 
 | architecture      | description                      | number of parameters   | validation loss   | validation accuracy   | 
 | --------------    | -------------------------------  | ---------------------  | ----------------  | --------------------  |
