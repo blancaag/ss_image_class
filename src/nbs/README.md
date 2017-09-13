@@ -61,8 +61,9 @@
       print("Selected number of aug. data generators: ", len(shuffle_ix))
 
       return ad_gens_g
-      ```   
-      
+```
+
+
 <br />     
 <img align="left" width="200" height="200" src="https://github.com/blancaag/ss_image_class/blob/building_blocks/src/output/aug_data_sample/_0_2276.png">
 <img align="right" width="200" height="200" src="https://github.com/blancaag/ss_image_class/blob/building_blocks/src/output/aug_data_sample/_0_5265.png">
