@@ -11,7 +11,7 @@
     The pipeline of is mainly by the aug_data_generators() function contained in ```utils_functions.py```:
 
     It iterates over a range of values for different parameters in order to generate a set of 288 different generators. A sample of the produced images gets stored in the src/output/aug_data_sample directory and is shown below.
-    
+
   - Modeling:
     - Base model: instanciating the ImageNet pre-trained models
     - Generating features: generating and store the base model output features after 'feeding' it with the augmented training data set
