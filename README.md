@@ -8,7 +8,6 @@ The following table show the results obtained after a few epochs of model traini
 
 | architecture      | description                      | number of parameters   | validation loss   | validation accuracy   | 
 | --------------    | -------------------------------  | ---------------------  | ----------------  | --------------------  |
-
 | InceptionV3       | InceptionV3 + 2-Dense top layer  | 17.8M (17.2M + 0.60M)  | 0.215             | 92.50%                |
 | ResNet50          | ResNet50 + 2-Dense top layer     | M  (.M + 0.M)          | 0.258             | 90.62%                |
 | MobileNet - T1    | MobileNet + "Heavy" top layer    | 3.5M (3.2M + 0.265M)   | 0.222             | 91.25%                |
