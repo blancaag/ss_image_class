@@ -147,11 +147,11 @@ In terms of model update on a production level, a second pipeline can be set in 
 
 ## Next steps
 
-* Test additional data
+* Test additional data (wip)
 * Further 'finetunning' work on InceptionV3
 * Add pretrained models .h5 files
 * Support generator from_directory for testing
-* Work with Dynamic Learning Rates callbacks
+* Add Dynamic Learning Rates callbacks
 * Add DenseNet 121, DenseNet 161 and DenseNet 169 
 * Add a filters visualization section
 * Lighten the Dockerfile image
