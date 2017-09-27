@@ -5,16 +5,27 @@ The purpose of this project is to assess the achivable accuracy on the sushi/san
 
 The following table show the results obtained after a few epochs of model training, which leaves scope for further accuracy improvement.
 
-
+##### Results with data augmentation
 
 | architecture      | description                      | number of parameters   | validation loss   | validation accuracy   | 
 | --------------    | -------------------------------  | ---------------------  | ----------------  | --------------------  |
 | InceptionV3       | InceptionV3 + 2-Dense top layer  | 17.8M (17.2M + 0.60M)  | 0.215             | 92.50%                |
 | ResNet50          | ResNet50 + 2-Dense top layer     | M  (.M + 0.M)          | 0.258             | 90.62%                |
 | MobileNet - T1    | MobileNet + "Heavy" top layer    | 3.5M (3.2M + 0.265M)   | 0.222             | 91.25%                |
-| MobileNet - T2.0  | MobileNet + "Light" top layer    | 3.3M (3.2M + 0.056M)   | 0.551             | 82.88 %               |
-| MobileNet - T2.1  | MobileNet + "Light" top layer    | 3.2M (3.2M + 0.003M)   | 0.353             | 84.13 %               |
-| Ensemble model    | ResNet50 +  MobileNet - T1       |          -----         | 0.234             | 90.62%                |
+| MobileNet - T2.0  | MobileNet + "Light" top layer    | 3.3M (3.2M + 0.003M)   | 0.551             | 82.88 %               |
+| MobileNet - T2.1  | MobileNet + "Light" top layer    | 3.2M (3.2M + 0.056M)   | 0.353             | 84.13 %               |
+| Ensemble model    | ResNet50 + MobileNet - T1        |          -----         | 0.234             | 90.62%                |
+
+##### Results w/o data augmentation + auxiliary data 
+
+| architecture      | description                      | number of parameters   | validation loss   | validation accuracy   | 
+| --------------    | -------------------------------  | ---------------------  | ----------------  | --------------------  |
+| MobileNet - T1    | baseline (w/o da w/o b.m.f.)     | 3.5M (3.2M + 0.265M)   | 0.559             | 75.00%                |
+| MobileNet - T1    | baseline + b.m.f.                | 3.5M (3.2M + 0.265M)   | 0.299             | 88.13%                |
+| MobileNet - T1    | with aux. data                   | 3.5M (3.2M + 0.265M)   | 1.184             | 60.00%                |
+| MobileNet - T1    | with aux. data + b.m.f.          | 3.5M (3.2M + 0.265M)   | 0.303             | 88.12%                |
+
+
 
 ## Getting Started
 
@@ -137,11 +148,11 @@ In terms of model update on a production level, a second pipeline can be set in 
 
 ## Next steps
 
-* Test additional data
+* Test additional data (wip)
 * Further 'finetunning' work on InceptionV3
 * Add pretrained models .h5 files
 * Support generator from_directory for testing
-* Work with Dynamic Learning Rates callbacks
+* Add Dynamic Learning Rates callbacks
 * Add DenseNet 121, DenseNet 161 and DenseNet 169 
 * Add a filters visualization section
 * Lighten the Dockerfile image
